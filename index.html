@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+  <div class="brand-section">
+    <h1 id="heading-title">Weather Forecast</h1>
+    <div class="location">
+      <i class="fas fa-map-marker-alt"></i>
+      <span id="location-name">Lahore</span>
+    </div>
+  </div>
+
+  <div class="search-section">
+    <form class="search-form" id="search-form">
+      <div class="search-container">
+        <i class="fa fa-search"></i>
+        <input type="text" id="city-input" placeholder="Search City..." />
+      </div>
+    </form>
+  </div>
+</nav>
+
+      <main>
+      <div class="day-cards" id="forecast-container">
+        <div class="day-card">
+          <p class="day">Monday</p>
+          <i class="fas fa-cloud-sun"></i>
+          <p class="temp">25°C</p>
+        </div>
+        <div class="day-card">
+          <p class="day">Tuesday</p>
+          <i class="fas fa-cloud-showers-heavy"></i>
+          <p class="temp">18°C</p>
+        </div>
+        <div class="day-card">
+          <p class="day">Wednesday</p>
+          <i class="fas fa-sun"></i>
+          <p class="temp">30°C</p>
+        </div>
+        <div class="day-card">
+          <p class="day">Thursday</p>
+          <i class="fas fa-cloud"></i>
+          <p class="temp">22°C</p>
+        </div>
+        <div class="day-card">
+          <p class="day">Friday</p>
+          <i class="fas fa-cloud"></i>
+          <p class="temp">22°C</p>
+        </div>
+        <div class="day-card">
+          <p class="day">Saturday</p>
+          <i class="fas fa-cloud"></i>
+          <p class="temp">22°C</p>
+        </div>
+        <div class="day-card">
+          <p class="day">Sunday</p>
+          <i class="fas fa-cloud"></i>
+          <p class="temp">22°C</p>
+        </div>
+      </div>
+
+    <div class="temp-card">
+        <div class="main-info">
+            <h2 id="main-temp">25°C</h2>
+            <p id="current-time">12:00 PM</p>
+            <p id="weather-description">Partly Cloudy</p>
+            <i class="fas fa-cloud-sun"></i>
+            <p>Feels like <span id="feels-like">27°C</span></p>
+        </div>
+
+        <div class="widgets-grid">
+            <div class="widget">
+                <i class="fas fa-tint"></i> Humidity: <span id="humidity-val">60%</span>
+            </div>
+            <div class="widget">
+                <i class="fas fa-wind"></i> Wind: <span id="wind-val">15 km/h</span>
+            </div>
+            <div class="widget">
+                <i class="fas fa-eye"></i> Visibility: <span id="visibility-val">15 km/h</span>
+            </div>
+            <div class="widget">
+                <i class="fas fa-sun"></i> UV Index: <span id="uv-val">Moderate</span>
+            </div>
+            <div class="widget">
+                <i class="fas fa-tachometer-alt"></i> Pressure: <span id="pressure-val">1013 hPa</span>
+            </div>
+            <div class="widget">
+                <i class="fas fa-droplet"></i> Dew Point: <span id="dew-val">12°C</span>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,295 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-image: url("weather.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px 5%;
+  color: white;
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#heading-title {
+  font-size: clamp(16px, 4vw, 24px);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(13px, 2.5vw, 18px);
+  color: #ff6b35;
+}
+
+.search-section {
+  flex-shrink: 0;
+}
+
+.search-form {
+  display: flex;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-container i {
+  position: absolute;
+  left: 12px;
+  color: #666;
+  z-index: 1;
+}
+
+.search-container input {
+  padding: 10px 15px 10px 35px;
+  font-size: 15px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 200px;
+  transition: width 0.3s ease;
+  background: white;
+}
+
+.search-container input:focus {
+  width: 260px;
+}
+
+
+main {
+  padding: 0 5%;
+}
+
+
+.day-cards {
+  display: flex;
+  gap: 15px;
+  padding: 30px 0;
+  color: white;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.day-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.day-card {
+  min-width: 130px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.day-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.day-card:first-child {
+  background-color: #ff6b35;
+  border: none;
+}
+
+.temp-card {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 30px;
+  padding: 30px;
+  width: 100%;
+  margin: 0 0 40px 0;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.main-info {
+  flex: 0 0 220px;
+  font-weight: bold;
+  font-size: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 25px 20px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.main-info i {
+  font-size: 50px;
+  color: #ff6b35;
+}
+
+.main-info h2 {
+  font-size: clamp(32px, 5vw, 52px);
+  margin: 0;
+}
+
+.main-info p {
+  font-size: 16px;
+  margin: 0;
+}
+.widgets-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  align-content: center;
+}
+
+.widget {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.widget i {
+  color: #ff6b35;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+
+@media (max-width: 900px) {
+  .temp-card {
+    flex-direction: column;
+  }
+
+  .main-info {
+    flex: none;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .main-info i {
+    padding-top: 0;
+  }
+
+  .widgets-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-container input {
+    width: 160px;
+  }
+
+  .search-container input:focus {
+    width: 210px;
+  }
+}
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 4%;
+    gap: 10px;
+  }
+
+  .brand-section {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-section {
+    width: 100%;
+  }
+
+  .search-form {
+    width: 100%;
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .search-container input {
+    width: 100%;
+  }
+
+  .search-container input:focus {
+    width: 100%;
+  }
+
+  main {
+    padding: 0 4%;
+  }
+
+  .temp-card {
+    padding: 20px 15px;
+    border-radius: 20px;
+  }
+
+  .widgets-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .widget {
+    font-size: 13px;
+    padding: 12px 10px;
+  }
+
+  .day-card {
+    min-width: 110px;
+    padding: 12px 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .widgets-grid {
+    grid-template-columns: 1fr;
+  }
+}
