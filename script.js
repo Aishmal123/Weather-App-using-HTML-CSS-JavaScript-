@@ -11,6 +11,8 @@ const wind = document.getElementById("wind-val");
 const visibility = document.getElementById("visibility-val");
 const pressure = document.getElementById("pressure-val");
 const forecastContainer = document.getElementById("forecast-container");
+const longitude= document.getElementById("lon-val");
+const latitude= document.getElementById("lat-val");
 
 async function checkWeather(city) {
   locationName.innerText = "Loading...";
@@ -43,7 +45,8 @@ function updateMainUI(data) {
   wind.innerText = data.wind.speed + " km/h";
   visibility.innerText = (data.visibility / 1000).toFixed(1) + " km";
   pressure.innerText = data.main.pressure + " hPa";
-  
+  longitude.innerText = data.coord.lon;
+  latitude.innerText = data.coord.lat;
   const iconCode = data.weather[0].icon;
   const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
   
@@ -128,7 +131,10 @@ function updateMainFromForecast(dayData, timezone) {
   feelsLike.innerText = Math.round(dayData.main.feels_like) + "°C";
   humidity.innerText = dayData.main.humidity + "%";
   wind.innerText = dayData.wind.speed + " km/h";
-  
+ lonVal.innerText = data.coord.lon;
+latVal.innerText = data.coord.lat;
+
+
   const iconCode = dayData.weather[0].icon;
   const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
   const mainImg = document.querySelector(".main-weather-icon");
