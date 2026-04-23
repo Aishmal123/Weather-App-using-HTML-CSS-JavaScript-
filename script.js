@@ -13,6 +13,11 @@ const pressure = document.getElementById("pressure-val");
 const forecastContainer = document.getElementById("forecast-container");
 const longitude= document.getElementById("lon-val");
 const latitude= document.getElementById("lat-val");
+const maxTemp = document.getElementById("max_temp-val");
+const minTemp = document.getElementById("min-temp-val");
+const Search_btn = document.querySelector(".btn button");
+
+
 
 async function checkWeather(city) {
   locationName.innerText = "Loading...";
@@ -47,6 +52,8 @@ function updateMainUI(data) {
   pressure.innerText = data.main.pressure + " hPa";
   longitude.innerText = data.coord.lon;
   latitude.innerText = data.coord.lat;
+  maxTemp.innerText=Math.round(data.main.temp_max) + "°C";
+  minTemp.innerText=Math.round(data.main.temp_min) + "°C";
   const iconCode = data.weather[0].icon;
   const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
   
@@ -90,7 +97,7 @@ async function getForecast(city) {
       }
     });
 
-    dailyData.slice(0, 5).forEach((dayData, index) => {
+    dailyData.slice(0, 6).forEach((dayData, index) => {
       const dateObj = new Date(dayData.dt * 1000);
       const dayName = dateObj.toLocaleDateString("en-US", { weekday: "long" });
       
@@ -115,6 +122,11 @@ async function getForecast(city) {
         card.classList.add("active"); 
         updateMainFromForecast(dayData, data.city.timezone);
       });
+      card.addEventListener("mouseover", ()=>{
+        document.querySelectorAll(".day-card").forEach(c=> c.classList.remove("active"));
+        card.classList.add("active");
+        updateMainFromForecast(dayData, data.city.timezone);
+      })
 
       forecastContainer.appendChild(card);
     });
@@ -131,10 +143,10 @@ function updateMainFromForecast(dayData, timezone) {
   feelsLike.innerText = Math.round(dayData.main.feels_like) + "°C";
   humidity.innerText = dayData.main.humidity + "%";
   wind.innerText = dayData.wind.speed + " km/h";
- lonVal.innerText = data.coord.lon;
-latVal.innerText = data.coord.lat;
-
-
+  longitude.innerText = dayData.coord.lon;
+  latitude.innerText = dayData.coord.lat;
+  maxTemp.innerText=Math.round(dayData.main.temp_max) + "°C";
+  minTemp.innerText=Math.round(dayData.main.temp_min) + "°C";
   const iconCode = dayData.weather[0].icon;
   const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
   const mainImg = document.querySelector(".main-weather-icon");
@@ -154,6 +166,13 @@ searchForm.addEventListener("submit", (e) => {
   if (cityInput.value.trim() !== "") {
     checkWeather(cityInput.value);
   }
+  if(cityInput.value.trim() === ""){
+    alert("Please enter a city name!");
+  }
 });
+Search_btn.addEventListener("click", () => {
+  if (cityInput.value.trim() !== "") {
+    checkWeather(cityInput.value);
+  } });
 
 checkWeather("Lahore");
